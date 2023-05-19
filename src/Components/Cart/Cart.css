@@ -1,0 +1,105 @@
+.cart {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 1rem;
+    padding-right: 0rem;
+    font-size: 2rem;
+    position: relative;
+    top: -20px;
+}
+
+.cart svg {
+    cursor: pointer;
+}
+
+.cart span {
+    font-size: 0.5em;
+    position: absolute;
+    top: -2px;
+    right: 0px;
+}
+
+.cardDetails {
+    display: none;
+}
+
+.cardDetails.show {
+    display: flex;
+    height: 100%;
+    width: 50%;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    z-index: 6;
+    background: rgba(13, 12, 12);
+    color: white;
+    overflow-y: hidden;
+    overflow-y: scroll;
+}
+
+.cross {
+    cursor: pointer;
+    position: absolute;
+    right: 97px;
+    top: 26px;
+}
+
+.cross svg {
+    font-size: 1.5rem;
+}
+
+.cartHeading{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-left: 1rem;
+}
+
+.cartHead{
+    font-size: 1.4rem;
+}
+
+.card-container{
+    position: absolute;
+    top: 4rem;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+}
+
+.cardCarts{
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.card-content{
+    margin-left: 0.5rem;
+}
+
+.cardCarts img{
+    width: 90px;
+}
+
+@media only screen and (max-width:991px) {
+    .cardDetails.show {
+        width: 80%;
+    }
+
+    .cart {
+        padding-right: 1rem;
+    }
+
+    .cart span {
+        right: 10px;
+    }
+
+    .cross {
+        right: 12px;
+        top: 15px;
+    }
+    .cartHead{
+        font-size: 1.2rem;
+    }
+}

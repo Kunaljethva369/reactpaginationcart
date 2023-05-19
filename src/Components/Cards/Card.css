@@ -1,0 +1,4 @@
+.price-buynow{
+    display: flex;
+    justify-content: space-between;
+}
