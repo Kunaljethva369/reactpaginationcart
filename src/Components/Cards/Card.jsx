@@ -6,6 +6,7 @@ function Card({ props }) {
         const datas = await res.json();
         if (datas && datas.products) {
             props.setData(datas.products);
+            // console.log
         }
     }
 
