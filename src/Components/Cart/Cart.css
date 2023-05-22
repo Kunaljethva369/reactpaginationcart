@@ -48,7 +48,7 @@
     font-size: 1.5rem;
 }
 
-.cartHeading{
+.cartHeading {
     margin-top: 1rem;
     display: flex;
     justify-content: space-between;
@@ -56,11 +56,11 @@
     margin-left: 1rem;
 }
 
-.cartHead{
+.cartHead {
     font-size: 1.4rem;
 }
 
-.card-container{
+.card-container {
     position: absolute;
     top: 4rem;
     display: flex;
@@ -68,45 +68,50 @@
     margin: 1rem;
 }
 
-.cardCarts{
+.cardCarts {
     display: flex;
     align-items: flex-start;
     margin-bottom: 1.5rem;
 }
 
-.cardCarts img{
+.cardCarts img {
     width: 90px;
 }
 
 
-.card-description{
+.card-description {
     padding-left: 2rem;
 }
 
-.qunatity{
+.qunatity {
     display: flex;
     justify-content: space-between;
+    width: 30%;
 }
 
-.qunatity button{
-      background: transparent;
-      border: none;
-      color: white;
-      padding: 0.5rem;
-      border-radius: 20%;
+.card-content {
+    margin-left: 1rem;
 }
 
-.qunatityNumber{
+.qunatity button {
+    background: transparent;
+    border: none;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 20%;
+}
+
+.qunatityNumber {
     margin: 0rem 1rem;
     display: flex;
-    align-items: center;    
+    align-items: center;
 }
 
-.qunatity .inc{
+.qunatity .inc {
     background-color: green;
 }
 
-.qunatity .dec{
+.qunatity .dec {
     background-color: red;
 }
 
@@ -128,7 +133,8 @@
         right: 12px;
         top: 15px;
     }
-    .cartHead{
+
+    .cartHead {
         font-size: 1.2rem;
     }
 }

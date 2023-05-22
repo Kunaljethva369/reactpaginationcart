@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Cart.css';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { RxCross1 } from 'react-icons/rx';
+import BuyNow from '../BuyNow/BuyNow';
 
 function Cart({ props }) {
     const [cartShow, setCartShow] = useState(false);
@@ -19,6 +20,7 @@ function Cart({ props }) {
     }
 
     const uniqueArray = removeDuplicateObjects(props.cardDetails, "id");
+
 
     return (
         <>
@@ -38,19 +40,24 @@ function Cart({ props }) {
                         uniqueArray.length > 0 ?
                             uniqueArray.map(function (ele, ind) {
                                 return (
-                                    <div className="cardCarts" key={ind}>
-                                        <img
-                                            src={ele.thumbnail} alt={ele.title} />
-                                        <div className="card-content">
-                                            <h5 className="card-title">{ele.title}</h5>
-                                            <div className='qunatity'>
-                                                <button className='dec'>-1</button>
-                                                <p className='qunatityNumber'>{ele.Qunatiy}</p>
-                                                <button className='inc'>+1</button>
+                                    <>
+                                        <div className="cardCarts" key={ind}>
+                                            <img
+                                                src={ele.thumbnail} alt={ele.title} />
+                                            <div className="card-content">
+                                                <h5 className="card-title">{ele.title}</h5>
+                                                <div className='qunatity'>
+                                                    {/* <button className='dec'>-</button> */}
+                                                    <p className='qunatityNumber'>{ele.Qunatiy}</p>
+                                                    {/* <button className='inc' onClick={() => { IncreaseQunatiy(ele) }}>+</button> */}
+                                                </div>
                                             </div>
+                                            <p className="card-description">₹ {ele.price}</p>
                                         </div>
-                                        <p className="card-description">₹ {ele.price}</p>
-                                    </div>
+                                        <div>
+                                            <BuyNow />
+                                        </div>
+                                    </>
                                 )
                             })
                             : <h2>Please Add Items In Carts</h2>

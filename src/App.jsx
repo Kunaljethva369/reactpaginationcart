@@ -15,7 +15,7 @@ function App() {
     <>
       <div className="container py-5">
         <div className="row">
-          <Cart props={{ cart, cardDetails }} />
+          <Cart props={{ cart, cardDetails, setCardDetails }} />
           <Pagination props={{ data, next, setNext, pervious, setPervious, page, setPage }} />
           <Card props={{ data, setData, page, cart, setCart, cardDetails, setCardDetails }} />
         </div>
