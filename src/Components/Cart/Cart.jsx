@@ -5,7 +5,21 @@ import { RxCross1 } from 'react-icons/rx';
 
 function Cart({ props }) {
     const [cartShow, setCartShow] = useState(false);
-    console.log(props.cardDetails);
+
+    function removeDuplicateObjects(arr, key) {
+        const seen = new Set();
+        return arr.filter((obj) => {
+            const objKey = obj[key];
+            if (!seen.has(objKey)) {
+                seen.add(objKey);
+                return true;
+            }
+            return false;
+        });
+    }
+
+    const uniqueArray = removeDuplicateObjects(props.cardDetails, "id");
+
     return (
         <>
             <div className='cart'>
@@ -21,8 +35,8 @@ function Cart({ props }) {
                 </div>
                 <div className="card-container">
                     {
-                        props.cardDetails.length > 0 ?
-                            props.cardDetails.map(function (ele, ind) {
+                        uniqueArray.length > 0 ?
+                            uniqueArray.map(function (ele, ind) {
                                 return (
                                     <div className="cardCarts" key={ind}>
                                         <img
@@ -31,9 +45,7 @@ function Cart({ props }) {
                                             <h5 className="card-title">{ele.title}</h5>
                                             <p className="card-description">₹ {ele.price}</p>
                                         </div>
-                                        <div className='quantity'>
-                                            <p>{ }</p>
-                                        </div>
+                                        <p className='qunatity'>{ele.Qunatiy}</p>
                                     </div>
                                 )
                             })

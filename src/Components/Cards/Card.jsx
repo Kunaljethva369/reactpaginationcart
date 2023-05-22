@@ -5,7 +5,13 @@ function Card({ props }) {
         const res = await fetch('https://dummyjson.com/products');
         const datas = await res.json();
         if (datas && datas.products) {
-            props.setData(datas.products);
+            const newData = datas.products.map(element => {
+                return {
+                    ...element,
+                    Qunatiy : 0
+                }
+            });
+            props.setData(newData);
         }
     }
 
@@ -15,6 +21,7 @@ function Card({ props }) {
 
     const changeCart = (ele) => {
         props.setCart(props.cart + 1);
+        ele.Qunatiy += 1;
         props.setCardDetails([
             ...props.cardDetails,
             ele

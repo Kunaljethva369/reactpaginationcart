@@ -74,12 +74,12 @@
     margin-bottom: 1.5rem;
 }
 
-.card-content{
-    margin-left: 0.5rem;
-}
-
 .cardCarts img{
     width: 90px;
+}
+
+.qunatity{
+    margin-left: 1rem;
 }
 
 @media only screen and (max-width:991px) {
