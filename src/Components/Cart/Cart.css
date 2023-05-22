@@ -78,9 +78,38 @@
     width: 90px;
 }
 
-.qunatity{
-    margin-left: 1rem;
+
+.card-description{
+    padding-left: 2rem;
 }
+
+.qunatity{
+    display: flex;
+    justify-content: space-between;
+}
+
+.qunatity button{
+      background: transparent;
+      border: none;
+      color: white;
+      padding: 0.5rem;
+      border-radius: 20%;
+}
+
+.qunatityNumber{
+    margin: 0rem 1rem;
+    display: flex;
+    align-items: center;    
+}
+
+.qunatity .inc{
+    background-color: green;
+}
+
+.qunatity .dec{
+    background-color: red;
+}
+
 
 @media only screen and (max-width:991px) {
     .cardDetails.show {

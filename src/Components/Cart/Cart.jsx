@@ -43,9 +43,13 @@ function Cart({ props }) {
                                             src={ele.thumbnail} alt={ele.title} />
                                         <div className="card-content">
                                             <h5 className="card-title">{ele.title}</h5>
-                                            <p className="card-description">₹ {ele.price}</p>
+                                            <div className='qunatity'>
+                                                <button className='dec'>-1</button>
+                                                <p className='qunatityNumber'>{ele.Qunatiy}</p>
+                                                <button className='inc'>+1</button>
+                                            </div>
                                         </div>
-                                        <p className='qunatity'>{ele.Qunatiy}</p>
+                                        <p className="card-description">₹ {ele.price}</p>
                                     </div>
                                 )
                             })
