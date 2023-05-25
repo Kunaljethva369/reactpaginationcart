@@ -1,26 +1,42 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './Cart.css';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { RiDeleteBin6Fill } from 'react-icons/ri';
 import { RxCross1 } from 'react-icons/rx';
-import BuyNow from '../BuyNow/BuyNow';
 
 function Cart({ props }) {
     const [cartShow, setCartShow] = useState(false);
 
-    function removeDuplicateObjects(arr, key) {
-        const seen = new Set();
-        return arr.filter((obj) => {
-            const objKey = obj[key];
-            if (!seen.has(objKey)) {
-                seen.add(objKey);
-                return true;
-            }
-            return false;
-        });
+    const IncreaseQunaity = (el) => {
+        props.setCount(el.Qunatiy += 1);
+        props.setCount(el.count += 1);
+    }
+    const DecreaseQunaity = (el) => {
+        props.setCount(el.Qunatiy -= 1);
+        props.setCount(el.count -= 1);
+        props.setCart(props.cart - 1);
     }
 
-    const uniqueArray = removeDuplicateObjects(props.cardDetails, "id");
-
+    const DeleteItem = (el) => {
+        function removeDuplicateObjects(arr, key) {
+            const seen = new Set();
+            return arr.filter((obj) => {
+                const objKey = obj[key];
+                if (!seen.has(objKey)) {
+                    seen.add(objKey);
+                    return true;
+                }
+                return false;
+            });
+        }
+        const uniqueArray = removeDuplicateObjects(props.cardDetails).filter((ele) => {
+            if (el.id != ele.id) {
+                return ele
+            }
+        });
+        props.setFilterCardDetails(uniqueArray);
+        props.setCart(props.cart - 1);
+    }
 
     return (
         <>
@@ -37,8 +53,8 @@ function Cart({ props }) {
                 </div>
                 <div className="card-container">
                     {
-                        uniqueArray.length > 0 ?
-                            uniqueArray.map(function (ele, ind) {
+                        props.filterCardDetils.length > 0 ?
+                            props.filterCardDetils.map(function (ele, ind) {
                                 return (
                                     <>
                                         <div className="cardCarts" key={ind}>
@@ -47,15 +63,16 @@ function Cart({ props }) {
                                             <div className="card-content">
                                                 <h5 className="card-title">{ele.title}</h5>
                                                 <div className='qunatity'>
-                                                    {/* <button className='dec'>-</button> */}
+                                                    {
+                                                        ele.count == 1 ? <button className='' onClick={() => { DeleteItem(ele) }}><RiDeleteBin6Fill /></button> : <button className='dec' onClick={() => { DecreaseQunaity(ele) }}>-</button>
+                                                    }
                                                     <p className='qunatityNumber'>{ele.Qunatiy}</p>
-                                                    {/* <button className='inc' onClick={() => { IncreaseQunatiy(ele) }}>+</button> */}
+                                                    <button className='inc' onClick={() => { IncreaseQunaity(ele) }}>+</button>
                                                 </div>
                                             </div>
                                             <p className="card-description">₹ {ele.price}</p>
                                         </div>
                                         <div>
-                                            <BuyNow />
                                         </div>
                                     </>
                                 )
@@ -63,6 +80,7 @@ function Cart({ props }) {
                             : <h2>Please Add Items In Carts</h2>
                     }
                 </div>
+                {/* <BuyNow /> */}
             </div>
         </>
     )

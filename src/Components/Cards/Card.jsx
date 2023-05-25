@@ -8,7 +8,8 @@ function Card({ props }) {
             const newData = datas.products.map(element => {
                 return {
                     ...element,
-                    Qunatiy : 0
+                    Qunatiy: 0,
+                    count:0
                 }
             });
             props.setData(newData);
@@ -19,6 +20,18 @@ function Card({ props }) {
         fetchData();
     }, []);
 
+    function removeDuplicateObjects(arr, key) {
+        const seen = new Set();
+        return arr.filter((obj) => {
+            const objKey = obj[key];
+            if (!seen.has(objKey)) {
+                seen.add(objKey);
+                return true;
+            }
+            return false;
+        });
+    }
+
     const changeCart = (ele) => {
         props.setCart(props.cart + 1);
         ele.Qunatiy += 1;
@@ -26,7 +39,11 @@ function Card({ props }) {
             ...props.cardDetails,
             ele
         ]);
+        props.setCount(ele.count += 1);
     }
+    useEffect(() => {
+        props.setFilterCardDetails(removeDuplicateObjects(props.cardDetails, "id"));
+    }, [props.count])
     return (
         <>
             {
